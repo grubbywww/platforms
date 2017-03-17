@@ -40,7 +40,7 @@ exit;
                 "opt":"add",
                 "url":purl,
                 "murl":murl,
-                "comment":comment,
+                "comment":comment.replace(/\s/g,""),
                 "serv":serv,
                 }, function (data) {
                   var dataO = jQuery.parseJSON(data);
@@ -193,7 +193,7 @@ function edititem(){
                 "item":item,
                 "url":url,
                 "murl":murl,
-                "desc":desc,
+                "desc":desc.replace(/\s/g,""),
                 }, function (data) {
 if (data==true){
 //$(ev).parent().parent().html("<div class='col-md-10'><div class='noUi-control noUi-success' id='slider_0'> <span class='desc label label-success' style='cursor:pointer;'  hr='"+url+"'   data-toggle='modal' data-target='#myModal' onmouseover='urls(this)'>"+desc+"</span></div></div><div class='col-md-2 del' ><div class='noUi-control noUi-success' id='slider_1'><a class='btn btn-circle btn-icon-only btn-default' href='#' onclick='del(this)' style='margin-left: 20px'><i class='icon-trash'></i></a><a class='btn btn-circle btn-icon-only btn-default' href='#' onclick=edit(this,'"+item+"','"+url+"','"+desc+"')><i class='icon-wrench'></i></a></div></div>");
