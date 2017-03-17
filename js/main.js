@@ -180,8 +180,10 @@ location.reload();
 function edititem(){
     //alert(item);
     item=$("#tenaid").val();
-    desc=$(ev).parent().parent().find(".edit_desc").val();
-    url=$(ev).parent().parent().find(".edit_url").val();
+    //desc=$(ev).parent().parent().find(".edit_desc").val();
+    //url=$(ev).parent().parent().find(".edit_url").val();
+    desc=$(".desc").val();
+    url=$(".purl").val();
     $.post("submit.php", {
                 "opt":"edititem",
                 "item":item,
