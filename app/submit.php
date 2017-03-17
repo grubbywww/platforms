@@ -50,10 +50,17 @@ $arr['num']=$num[0]['con'];
      $item=$formArr['item'];
      $url=$formArr['url'];
      $desc=$formArr['desc'];
+
     $result=$dbConW->get_all("select * from Tbl_item where comment='".$desc."' and web_url='".$url."'");
-      if (!$result){
+if (!$result){
      $dbConW->query("update Tbl_item set web_url='".$url."',comment='".$desc."' where item=".$item);
-     echo true;
+
+    exec('sudo /data/apps/opt/nginx/sbin/nginx -t 2>&1 > /dev/stdout',$result);
+    if (strpos($result[0],'ok')!==false){
+    echo true;
+    }else{
+    echo false;
+    }
  }else{
      echo false;
  }

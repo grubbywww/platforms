@@ -103,12 +103,11 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-							<h4 class="modal-title">描述、代理URL、转发URL</h4>
+							<h4 class="modal-title">CREATE URL</h4>
 						</div>
 						<div class="modal-body">
 							     <form action="#" class="form-horizontal">
                                             <div class="form-body">
-
                                                     <div class="form-group">
                                                     <label class="col-md-3 control-label">DESCRIPTION</label>
                                                     <div class="col-md-8">
@@ -153,6 +152,59 @@
 			</div>
 			<!-- /.modal -->
 			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+            <div class="modal fade" id="portlet-configs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <h4 class="modal-title">CHANGE URL</h4>
+                        </div>
+                        <div class="modal-body">
+                                 <form action="#" class="form-horizontal">
+                                            <div class="form-body">
+                                            <input text="hidden" id="tenaid">
+                                                    <div class="form-group">
+                                                    <label class="col-md-3 control-label">DESCRIPTION</label>
+                                                    <div class="col-md-8">
+                                                        <div class="input-icon">
+                                                        <i class="fa fa-envelope"></i>
+                                                            <input type="text" class="form-control circle desc" placeholder="描述">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">PROXY URL</label>
+                                                    <div class="col-md-8">
+                                                         <div class="input-icon">
+                                                            <i class="fa fa-envelope"></i>
+                                                            <input type="text" class="form-control circle purl" placeholder="代理URL https://platform.op.easemob.com:port"  onblur="check_port()">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">TRANSFER URL</label>
+                                                    <div class="col-md-8">
+                                                        <div class="input-icon">
+                                                            <i class="fa fa-envelope"></i>
+                                                            <input type="text" class="form-control circle murl" placeholder="转发URL">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn blue" onclick="edititem()">Save changes</button>
+                            <button type="button" class="btn default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
 			<!-- BEGIN PAGE BREADCRUMB -->
 			<ul class="page-breadcrumb breadcrumb">
 				<li>
@@ -207,7 +259,7 @@
 <a class="btn btn-circle btn-icon-only btn-danger"  onclick="del(this)" style="margin-left: 20px">
 									<i class="icon-trash"></i>
 									</a>
-<a class="btn btn-circle btn-icon-only btn-success"  data-toggle="modal" data-target="#portlet-config" onmouseover="edit(this,'{$val.item}','{$val.web_url}','{$val.comment}')">
+<a class="btn btn-circle btn-icon-only btn-success"  data-toggle="modal" data-target="#portlet-configs" onmouseover="edit(this,'{$val.item}','{$val.web_url}','{$val.comment}')">
 									<i class="icon-wrench"></i>
 									</a>
 
