@@ -56,9 +56,9 @@ return "";
 }
 
 function config_nginx($id,$url,$PORT,$oldport=''){
-if ($oldport!==''){
+if ($oldport!=''){
   $OLDFILE = NGINX_CONFIG."platform_".$oldport.".conf";
-  $result = @unlink ($OLDFILE);
+  $result = unlink ($OLDFILE);
 }
 $FILE = NGINX_CONFIG."platform_".$PORT.".conf";
 $myfile = fopen($FILE,"w");
