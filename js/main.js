@@ -156,6 +156,10 @@ $(ev).parent().parent().parent().remove();
     }, "text");
 }
 
+function change(){
+    $("#desc").val("http://");
+    $("#purl").val('https://platform.op.easemob.com:');
+}
 
 function edit(ev,items,url,comment){
     $("#desc").val(comment);
