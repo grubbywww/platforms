@@ -158,11 +158,14 @@ $(ev).parent().parent().parent().remove();
 
 
 function edit(ev,items,url,comment){
-   item=$(ev).parent().parent().parent().attr("vl");
-   desc=$(ev).parent().parent().parent().find(".desc").text();
-   $(ev).parent().parent().parent().html("<div class='col-md-3'><input type='text' value="+desc+" class='form-control edit_desc'></div><div class='col-md-4'><input type='text' value="+url+" class='form-control edit_url'></div><div ><button type='button' onclick='edititem(this,"+items+")' class='btn btn-primary'>SUBMIT</button><button type='button' class='btn btn-default' onclick=recover()>CANCEL</button></div>");
+    $("#desc").val("comment");
+    $("#purl").val("url");
+   //item=$(ev).parent().parent().parent().attr("vl");
+   //desc=$(ev).parent().parent().parent().find(".desc").text();
+  // $(ev).parent().parent().parent().html("<div class='col-md-3'><input type='text' value="+desc+" class='form-control edit_desc'></div><div class='col-md-4'><input type='text' value="+url+" class='form-control edit_url'></div><div ><button type='button' onclick='edititem(this,"+items+")' class='btn btn-primary'>SUBMIT</button><button type='button' class='btn btn-default' onclick=recover()>CANCEL</button></div>");
 
 }
+
 function recover(){
 location.reload();
 // $(ev).parent().parent().html("<div class='col-md-10'><div class='noUi-control noUi-success' id='slider_0'><a  class='desc' href='"+url+"'>"+desc+"</a></div></div><div class='col-md-2 del' ><div class='noUi-control noUi-success' id='slider_1'><a class='btn btn-circle btn-icon-only btn-default' href='#' onclick='del(this)' style='margin-left: 80px'><i class='icon-trash'></i></a><a class='btn btn-circle btn-icon-only btn-default' href='#' onclick=edit(this,'"+items+"','"+url+"','"+desc+"')><i class='icon-wrench'></i></a></div></div>");
