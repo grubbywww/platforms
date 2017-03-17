@@ -76,18 +76,22 @@ function check_port(){
 
 
 
-function del(ev){
+function del(item,url){
   serv=$("#item").text();
-  item=$(ev).parent().parent().parent().attr("vl");
   if(confirm("确认删除?")){
      $.post("submit.php", {
                 "opt":"del",
                 "item":item,
+                "url":url,
                 "serv":serv,
                 }, function (data) {
 var dataO = jQuery.parseJSON(data);
-  $(ev).parent().parent().parent().remove();
-  $("#count").html(dataO['num']);
+                  if(dataO['code']==true){
+      alert("删除成功");
+      $("#count").html(dataO['num']);
+                  }else{
+                  alert("删除失败NGINX配置问题");
+                }
 
     }, "text");
    }

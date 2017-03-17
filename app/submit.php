@@ -35,6 +35,12 @@ $arr['num']=$num[0]['con'];
     case "del":
     $item=$formArr['item'];
     $serv=$formArr['serv'];
+    $url=$formArr['url'];
+    preg_match_all('(\d+)',$url,$ports);
+    $port=$ports[0][0];
+    remove_nginx($port);
+    exec('sudo /data/apps/opt/nginx/sbin/nginx -t 2>&1 > /dev/stdout',$results);
+    if (strpos($results[0],'ok')!==false){
     $result=$dbConW->query("delete from Tbl_item where service='".$serv."' and item='".$item."'");
     $num=$dbConW->get_all("select count(*) as con from Tbl_item where service='".$serv."'");
     $arr['num']=$num[0]['con'];
@@ -45,6 +51,11 @@ $arr['num']=$num[0]['con'];
          $arr['code']=false;
         echo json_encode($arr);
     }
+    }else{
+           $arr['code']=false;
+        echo json_encode($arr);
+    }
+
     break;
     case "edititem":
      $item=$formArr['item'];
