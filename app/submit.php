@@ -55,12 +55,13 @@ $arr['num']=$num[0]['con'];
     $port=$ports[0][0];
     $result=$dbConW->get_all("select * from Tbl_item where comment='".$desc."' and web_url='".$url."'");
 if (!$result){
-     $dbConW->query("update Tbl_item set web_url='".$url."',comment='".$desc."' where item=".$item);
-    preg_match_all('(\d+)',$result['url'],$oldports);
+
+    preg_match_all('(\d+)',$result['web_url'],$oldports);
     $oldport=$oldports[0][0];
     config_nginx($item,$murl,$port,$oldport);
-    exec('sudo /data/apps/opt/nginx/sbin/nginx -t 2>&1 > /dev/stdout',$result);
-    if (strpos($result[0],'ok')!==false){
+    exec('sudo /data/apps/opt/nginx/sbin/nginx -t 2>&1 > /dev/stdout',$results);
+    if (strpos($results[0],'ok')!==false){
+    $dbConW->query("update Tbl_item set web_url='".$url."',comment='".$desc."' where item=".$item);
     echo true;
     }else{
     echo false;
