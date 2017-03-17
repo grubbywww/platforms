@@ -55,8 +55,8 @@ $arr['num']=$num[0]['con'];
     $port=$ports[0][0];
     $result=$dbConW->get_all("select * from Tbl_item where comment='".$desc."' and web_url='".$url."'");
 if (!$result){
-
-    preg_match_all('(\d+)',$result['web_url'],$oldports);
+    $rs=$dbConW->get_one("select * from Tbl_item where item='".$item."'");
+    preg_match_all('(\d+)',$rs['web_url'],$oldports);
     $oldport=$oldports[0][0];
     config_nginx($item,$murl,$port,$oldport);
     exec('sudo /data/apps/opt/nginx/sbin/nginx -t 2>&1 > /dev/stdout',$results);
