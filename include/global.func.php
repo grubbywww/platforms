@@ -55,7 +55,11 @@ return "";
 
 }
 
-function config_nginx($id,$url,$PORT){
+function config_nginx($id,$url,$PORT,$oldport=''){
+if ($oldport!==''){
+  $OLDFILE = NGINX_CONFIG."platform_".$oldport.".conf";
+  $result = @unlink ($OLDFILE);
+}
 $FILE = NGINX_CONFIG."platform_".$PORT.".conf";
 $myfile = fopen($FILE,"w");
 $content = "server{\nresolver 8.8.8.8;\nlisten ".$PORT.";\nssl on;\nssl_session_cache shared:SSL:500m;\nssl_session_timeout 10m;\nssl_protocols TLSv1 TLSv1.1 TLSv1.2;\nssl_certificate /home/easemob/apps/config/nginx/https/platform.op.easemob.com.pem;\nssl_certificate_key /home/easemob/apps/config/nginx/https/platform.op.easemob.com.key;\nlocation /auth{\nproxy_pass http://10.165.99.224:81/auth.php?id=".$id.";\nproxy_pass_request_body off;\nproxy_set_header Content-Length \"\";\nproxy_set_header X-Original-URI \t\$request_uri;\n}\nlocation / {\nproxy_set_header\tHost\t\$host;\nproxy_set_header\tX-Real-IP\t\$remote_addr;\nproxy_set_header\tX-Forwarded-For\t\$proxy_add_x_forwarded_for;\nauth_request /auth;\nproxy_pass ".$url.";\n}\nerror_page 403 = @error403;\nlocation @error403 {\nreturn 302 https://platform.op.easemob.com/app/auth/login.php;\n}\n}";

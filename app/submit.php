@@ -56,7 +56,9 @@ $arr['num']=$num[0]['con'];
     $result=$dbConW->get_all("select * from Tbl_item where comment='".$desc."' and web_url='".$url."'");
 if (!$result){
      $dbConW->query("update Tbl_item set web_url='".$url."',comment='".$desc."' where item=".$item);
-    config_nginx($item,$murl,$port);
+    preg_match_all('(\d+)',$result['url'],$oldports);
+    $oldport=$oldports[0][0];
+    config_nginx($item,$murl,$port,$oldport);
     exec('sudo /data/apps/opt/nginx/sbin/nginx -t 2>&1 > /dev/stdout',$result);
     if (strpos($result[0],'ok')!==false){
     echo true;
