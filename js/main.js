@@ -74,9 +74,7 @@ function check_port(){
     }, "text");
 }
 
-
-
-function del(item,url){
+function del(ev,item,url){
   serv=$("#item").text();
   if(confirm("确认删除?")){
      $.post("submit.php", {
@@ -89,6 +87,7 @@ var dataO = jQuery.parseJSON(data);
                   if(dataO['code']==true){
       alert("删除成功");
       $("#count").html(dataO['num']);
+        $(ev).parent().parent().parent().remove();
                   }else{
                   alert("删除失败NGINX配置问题");
                 }
