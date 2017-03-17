@@ -157,7 +157,7 @@ $(ev).parent().parent().parent().remove();
 }
 
 function change(){
-    $("#desc").val("http://");
+    $("#murl").val("http://");
     $("#purl").val('https://platform.op.easemob.com:');
 }
 
