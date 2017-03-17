@@ -180,6 +180,7 @@ location.reload();
 function edititem(){
     //alert(item);
     item=$("#tenaid").val();
+    murl=$(".murl").val();
     //desc=$(ev).parent().parent().find(".edit_desc").val();
     //url=$(ev).parent().parent().find(".edit_url").val();
     desc=$(".desc").val();
@@ -188,6 +189,7 @@ function edititem(){
                 "opt":"edititem",
                 "item":item,
                 "url":url,
+                "murl":murl,
                 "desc":desc,
                 }, function (data) {
 if (data==true){
