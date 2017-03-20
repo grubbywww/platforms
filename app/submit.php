@@ -12,7 +12,7 @@ switch ($formArr['opt']){
     $port=$ports[0][0];
 $result=$dbConW->get_all("select * from Tbl_item where comment='".$comment."' or web_url='".$url."'");
   if (!$result){
-if ($ports[0][0]==Null){
+if ($ports[0][0]==null){
     $arr['code']=false;
 }else{
 
